@@ -2,11 +2,11 @@ import random
 
 
 def startingPlayer():
-    return random.randint(0, 1)
+    return random.randint(0, 1) # chooses which player starts
 
 
 def updateBoard(board, pos, turn):
-    if turn == 0:
+    if turn == 0: # updates board based on turn
         piece = "X"
     else:
         piece = "O"
@@ -27,7 +27,7 @@ def printBoard(board):
         print("")
 
 
-def invert(turn):
+def invert(turn):  # used to switch turns after each move
     if turn == 1:
         return 0
     return 1
@@ -54,7 +54,6 @@ def Winner(pos, pmoves):
     row = ["123", "456", "789"]
     col = ["147", "258", "369"]
     diag = ["159", "357"]
-    # cases = {1: [[1, 2, 3], [1, 4, 7], [1, 5, 9]], }
     for i in row:
         if str(pos) in i:
             case = i
@@ -80,12 +79,12 @@ def main():
     player2 = ""
     pscores = [0, 0]
     game = True
-    while player1 == player2:
+    while player1 == player2: # checks that player1 isn't the same as player2
         player1 = input("Enter the name of player1")
         player2 = input("Enter the name of player2")
-    turn = startingPlayer()
+    turn = startingPlayer() # randomly assigns the starting player
     players = (player1, player2)
-    while game:
+    while game: # while game is being played
         board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"]
         pmoves = [[], []]
         while not boardFull(board):
@@ -95,9 +94,9 @@ def main():
                 try:
                     printBoard(board)
                     pos = int(input("Enter move(1-9)"))
-                except ValueError:
+                except ValueError: #stops crashing if user enters string input
                     pos = -1
-            if freeSpace(board, pos):
+            if freeSpace(board, pos): # if space is free: switch turns, add the move to an array and update the board
                 pmoves[turn].append(pos)
                 updateBoard(board, pos, turn)
                 turn = invert(turn)
