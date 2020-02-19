@@ -1,5 +1,3 @@
 # NoughtsAndCrosses
-Crappy Python Noughts and Crosses Game
-No AI or anything, just a boring text-based noughts and crosses game.
-Will add an AI soon hopefully!
-
+Crappy Python Noughts and Crosses game with AI using minimax algorithm.
+No alpha-beta pruning just yet.
