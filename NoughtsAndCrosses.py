@@ -1,6 +1,7 @@
 import random
 import evaluate
 import CompAI
+import time
 
 
 def turnIndex(turn):
@@ -14,6 +15,7 @@ def turnIndex(turn):
 def playerToIndex(turn):
     index = {-1: 0, 1: 1}
     return index[turn]
+
 
 def startingPlayer():
     return random.randint(0, 1)  # chooses which player starts
@@ -84,6 +86,8 @@ def main():
                 print(f"{players[turnIndex(turn)]}'s turn!")
                 pos = position(board)  # taken as int from 1-9
             else:
+                print("thinking...")
+                time.sleep(1)  # delay for realisticness
                 pos = CompAI.compMove(board, turn)
             board[pos - 1] = turn
             turn = evaluate.invert(turn)

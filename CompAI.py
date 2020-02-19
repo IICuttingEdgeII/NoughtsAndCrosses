@@ -20,7 +20,6 @@ def mini(lst):
 
 def minimax(board, depth, maximising):
     if evaluate.checkWinner(board) is not None:
-        print(evaluate.checkWinner(board))
         return evaluate.checkWinner(board)
     else:
         if maximising:
